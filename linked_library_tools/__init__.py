@@ -374,9 +374,9 @@ def draw_menu(self, context):
         operator.selection_json = json.dumps(snapshot_selection(context))
 
 
-# ID Data is used for meshes/materials; object/collection have separate menus.
-MENU_NAMES = ('OUTLINER_MT_id_data', 'OUTLINER_MT_object',
-              'OUTLINER_MT_collection', 'OUTLINER_MT_context_menu')
+# Object and Collection menus already include the ID Data submenu.
+# Keep the generic context menu for selections using that fallback instead.
+MENU_NAMES = ('OUTLINER_MT_id_data', 'OUTLINER_MT_context_menu')
 
 
 def register():
