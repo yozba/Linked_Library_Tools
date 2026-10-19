@@ -1,0 +1,26 @@
+# Local repository root: C:\Users\<user>\Documents\gitrepository\
+# Linked_Library_Tools/ is the extension directory; this manifest belongs at its root.
+schema_version = "1.0.0"
+id = "linked_library_tools"
+version = "0.3.0"
+name = "Linked Library Tools"
+tagline = "Remap linked data and recover missing blend libraries"
+maintainer = "yozba"
+type = "add-on"
+blender_version_min = "5.0.0"
+license = ["SPDX:GPL-3.0-or-later"]
+tags = ["Pipeline"]
+
+[permissions]
+files = "Read blend files to remap data and recover missing libraries"
+
+[build]
+paths_exclude_pattern = [
+    "__pycache__/",
+    "*.pyc",
+    "*.pyo",
+    ".*",
+    "/dist/",
+    "/tests/",
+    "/tools/",
+]
