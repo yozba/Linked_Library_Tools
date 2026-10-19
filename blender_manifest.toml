@@ -2,7 +2,7 @@
 # Linked_Library_Tools/ is the extension directory; this manifest belongs at its root.
 schema_version = "1.0.0"
 id = "linked_library_tools"
-version = "0.3.1"
+version = "0.3.2"
 name = "Linked Library Tools"
 tagline = "Remap linked data and recover missing blend libraries"
 maintainer = "yozba"

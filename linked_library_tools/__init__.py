@@ -91,8 +91,12 @@ def resolve_source(record):
         return None
     source_key = path_key(record['library']) if record['library'] else ''
     for data in getattr(bpy.data, record['collection']):
+        # Resolving a linked path can touch a slow or unavailable filesystem.
+        # Only inspect the library of IDs with the requested name.
+        if data.name != record['name']:
+            continue
         key = library_key(data.library) if data.library else ''
-        if data.name == record['name'] and key == source_key:
+        if key == source_key:
             return data
     return None
 
@@ -100,9 +104,9 @@ def resolve_source(record):
 def find_target(source, collection, target_path):
     target_key = path_key(target_path)
     for data in getattr(bpy.data, collection):
-        if (data.library and library_key(data.library) == target_key
-                and data.name == source.name
+        if (data.name == source.name
                 and data.bl_rna.identifier == source.bl_rna.identifier
+                and data.library and library_key(data.library) == target_key
                 and not data.is_embedded_data
                 and not getattr(data, 'is_missing', False)):
             return data
